@@ -5,7 +5,9 @@ import cookieParser from "cookie-parser";
 import compression from "compression";
 import cors from "cors";
 import mongoose from "mongoose";
-import { error } from "console";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -25,8 +27,7 @@ server.listen(8080, () => {
   console.log("Server running on http://localhost:8080/");
 });
 
-const MONGO_URL =
-  "mongodb+srv://lucassantana1:IrsnVbk5pO3i4iIU@cluster0.drmk5iz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const MONGO_URL = process.env.MONGO_URL!;
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
